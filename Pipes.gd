@@ -10,3 +10,9 @@ func get_width():
 func _on_VisibilityNotifier2D_screen_exited():
 	queue_free()
 	get_parent().pipe_counter -= 1
+
+
+func _on_Area2D_body_entered(body):
+	if "Bird" in body.name:
+		Global.score += 1
+		get_parent().get_node("CanvasLayer/VBoxContainer/Score").text = str(Global.score)

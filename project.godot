@@ -19,6 +19,10 @@ config/name="Flappy Bird"
 run/main_scene="res://Stage.tscn"
 config/icon="res://Sprites/flappy_bird_icon.png"
 
+[autoload]
+
+Global="*res://Global.gd"
+
 [display]
 
 window/size/width=144

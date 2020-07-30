@@ -16,7 +16,7 @@ var pipe_counter = 0
 func _ready():
 	random.randomize()
 	pipe_generator_position = Vector2(SCREEN_WIDTH + PIPE.instance().WIDTH/2, random.randi_range(VERTICAL_OFFSET, SCREEN_HEIGHT - (GROUND_HEIGHT + VERTICAL_OFFSET)))
-
+	get_tree().paused = true
 
 func _process(_delta):
 	if pipe_counter != 3:
@@ -28,3 +28,11 @@ func _process(_delta):
 		pipe_generator_position.y = random.randi_range(VERTICAL_OFFSET, SCREEN_HEIGHT - (GROUND_HEIGHT + VERTICAL_OFFSET))
 		pipe_counter+=1
 
+
+
+
+
+
+func _on_InstructionScreenButton_pressed():
+	get_tree().paused = false
+	$InstructionScreenButton.visible = false

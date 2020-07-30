@@ -4,7 +4,7 @@ extends RigidBody2D
 
  
 func _ready():
-	pass # Replace with function body.
+	set_linear_velocity(Vector2(50,get_linear_velocity().y))
 
 
 func _physics_process(delta):
@@ -32,7 +32,7 @@ func _input(event):
 
 
 func flap():
-	set_linear_velocity(Vector2(0,-150))
+	set_linear_velocity(Vector2(get_linear_velocity().x,-150))
 	set_angular_velocity(-3)
 
 

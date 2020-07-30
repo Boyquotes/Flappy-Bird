@@ -17,8 +17,9 @@ animations = [ {
 radius = 5.937
 
 [node name="Bird" type="RigidBody2D"]
-position = Vector2( 72, 96 )
+position = Vector2( 24, 32 )
 gravity_scale = 5.0
+linear_damp = 0.0
 script = ExtResource( 4 )
 __meta__ = {
 "_edit_group_": true
@@ -31,4 +32,11 @@ animation = "Flap"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 2 )
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+current = true
+limit_left = 0
+limit_top = 0
+limit_bottom = 256
+smoothing_enabled = true
+smoothing_speed = 1.0

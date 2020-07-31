@@ -46,3 +46,17 @@ func _process(_delta):
 func _on_InstructionScreenButton_pressed():
 	get_tree().paused = false
 	$InstructionScreenButton.visible = false
+
+
+
+func _on_PauseButton_pressed():
+	$CanvasLayer/PauseButton.visible = false
+	$CanvasLayer/ResumeButton.visible = true
+	get_tree().paused = true
+	
+
+
+func _on_ResumeButton_pressed():
+	$CanvasLayer/PauseButton.visible = true
+	$CanvasLayer/ResumeButton.visible = false
+	get_tree().paused = false

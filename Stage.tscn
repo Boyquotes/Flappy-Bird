@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Sprites/background_day.png" type="Texture" id=1]
 [ext_resource path="res://Bird.tscn" type="PackedScene" id=2]
@@ -7,8 +7,10 @@
 [ext_resource path="res://Sprites/instructions.png" type="Texture" id=5]
 [ext_resource path="res://Font/04B_19__.TTF" type="DynamicFontData" id=6]
 [ext_resource path="res://GroundnCeiling.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Sprites/button_resume.png" type="Texture" id=8]
+[ext_resource path="res://Sprites/button_pause.png" type="Texture" id=9]
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=1]
 size = 18
 outline_size = 3
 outline_color = Color( 0, 0, 0, 1 )
@@ -82,7 +84,7 @@ __meta__ = {
 [node name="Score" type="Label" parent="CanvasLayer/VBoxContainer"]
 margin_right = 144.0
 margin_bottom = 19.0
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 1 )
 text = "0"
 align = 1
 valign = 1
@@ -90,6 +92,30 @@ __meta__ = {
 "_edit_lock_": true
 }
 
+[node name="PauseButton" type="TextureButton" parent="CanvasLayer"]
+margin_left = 8.0
+margin_top = 7.0
+margin_right = 21.0
+margin_bottom = 21.0
+texture_normal = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ResumeButton" type="TextureButton" parent="CanvasLayer"]
+pause_mode = 2
+visible = false
+margin_left = 8.0
+margin_top = 7.0
+margin_right = 21.0
+margin_bottom = 21.0
+texture_normal = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="GroundnCeiling" parent="." instance=ExtResource( 7 )]
-position = Vector2( 2.35013e-06, -2.05145e-06 )
+position = Vector2( -1.07288e-05, 7 )
 [connection signal="pressed" from="InstructionScreenButton" to="." method="_on_InstructionScreenButton_pressed"]
+[connection signal="pressed" from="CanvasLayer/PauseButton" to="." method="_on_PauseButton_pressed"]
+[connection signal="pressed" from="CanvasLayer/ResumeButton" to="." method="_on_ResumeButton_pressed"]

@@ -34,7 +34,18 @@ func _input(event):
 func flap():
 	set_linear_velocity(Vector2(get_linear_velocity().x,-150))
 	set_angular_velocity(-3)
+	if not $FlapSound.is_playing():
+		$FlapSound.play()
 
 
 
-
+func dead():
+	
+	#gets a sort of death animation
+	if not $DeathSound.is_playing():
+		$DeathSound.play()
+	set_process_input(false)
+	set_pause_mode(PAUSE_MODE_PROCESS)
+	$Camera2D.current = false
+	$AnimatedSprite.playing = false #THIS DOESNT WORK?
+	

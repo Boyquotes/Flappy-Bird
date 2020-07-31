@@ -14,7 +14,7 @@ func _on_VisibilityNotifier2D_screen_exited():
 
 func _on_Area2D_body_entered(body):
 	if "Bird" in body.name:
-		Global.score += 1
+		Global.score += 10
 		get_parent().get_node("CanvasLayer/VBoxContainer/Score").text = str(Global.score)
 		if not $PointSound.is_playing():
 			$PointSound.play()

@@ -1,6 +1,5 @@
 extends RigidBody2D
 
- 
 
  
 func _ready():
@@ -8,7 +7,6 @@ func _ready():
 
 
 func _physics_process(delta):
-	$AnimatedSprite.play("Flap")
 	#When facing up stay at -30 degrees
 	if get_rotation_degrees() <= -30:
 		set_rotation_degrees(-30)
@@ -25,6 +23,8 @@ func _physics_process(delta):
 			set_angular_velocity(0)
 
 
+
+
 func _input(event):
 	if event is InputEventMouseButton:
 		flap()
@@ -32,9 +32,29 @@ func _input(event):
 
 
 func flap():
+	$AnimatedSprite.play("Flap")
 	set_linear_velocity(Vector2(get_linear_velocity().x,-150))
 	set_angular_velocity(-3)
+	if not $FlapSound.is_playing():
+		$FlapSound.play()
+	
+
+
+func dead():
+	if not $FallSound.is_playing():
+		$FallSound.play()
+	
+	#gets a sort of death animation
+	set_process_input(false)
+	$Camera2D.current = false
+	$AnimatedSprite.stop()
+	
+	
 
 
 
 
+#Transition to game over screen
+func _on_FallSound_finished():
+	get_tree().change_scene("res://UI/GameOverScreen.tscn")
+	

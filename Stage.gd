@@ -23,8 +23,6 @@ func _ready():
 	Global.score = 0
 	Global.load_highscore()
 	#Get ready for tutorial
-	get_tree().paused = true
-	
 
 func _process(_delta):
 	if pipe_counter != 3:

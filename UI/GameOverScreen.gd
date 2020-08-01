@@ -19,4 +19,4 @@ func _process(_delta):
 
 
 func _on_PlayButton_pressed():
-	get_tree().change_scene("res://Stage.tscn")
+	get_tree().change_scene("res://UI/TutorialScreen.tscn")

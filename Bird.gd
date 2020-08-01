@@ -46,7 +46,6 @@ func dead():
 	
 	#gets a sort of death animation
 	set_process_input(false)
-	set_pause_mode(PAUSE_MODE_PROCESS)
 	$Camera2D.current = false
 	$AnimatedSprite.stop()
 	

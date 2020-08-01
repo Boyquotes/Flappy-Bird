@@ -3,8 +3,8 @@ extends StaticBody2D
 
 const WIDTH = 26
 
-func get_width():
-	return WIDTH
+func _ready():
+	get_parent().get_node("ScreenShake").get_node("Tween").connect("tween_completed", self, "on_tween_completed")
 
 
 func _on_VisibilityNotifier2D_screen_exited():
@@ -24,4 +24,14 @@ func _on_Pipes_body_entered(body):
 	if "Bird" in body.name:
 		if not $HitPipesSound.is_playing():
 			$HitPipesSound.play()
-		body.dead()
+			
+			#shake effect
+			get_parent().get_node("ScreenShake").screen_shake(0.3,10,100)
+			
+#		body.dead()
+
+
+func on_tween_completed(object, key):
+	get_parent().get_node("Bird").dead()
+
+
